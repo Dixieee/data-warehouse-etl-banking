@@ -1,5 +1,3 @@
-Berikut **README.md saja (siap copy–paste ke GitHub)**:
-
 ````markdown
 # 📊 Data Warehouse & ETL Pipeline for Banking Transaction Analysis
 
