@@ -1,150 +1,133 @@
-````markdown
-# 📊 Data Warehouse & ETL Pipeline for Banking Transaction Analysis
+---
 
-## 📌 Description
-This project focuses on designing and implementing a Data Warehouse along with an ETL (Extract, Transform, Load) pipeline to integrate and process banking transaction data from multiple sources including SQL Server, Excel, and CSV files.
+DATA WAREHOUSE & ETL PIPELINE FOR BANKING TRANSACTION ANALYSIS
 
-The system enables efficient data analysis through structured dimension and fact tables, supported by analytical stored procedures.
+Description
+Project ini bertujuan untuk membangun Data Warehouse dan ETL (Extract, Transform, Load) pipeline untuk mengintegrasikan dan mengolah data transaksi perbankan dari berbagai sumber seperti SQL Server, Excel, dan CSV.
+Data yang sudah terstruktur digunakan untuk analisis melalui stored procedure.
 
 ---
 
-## 🎯 Objectives
-- Build a Data Warehouse (DWH) for banking data  
-- Perform ETL from multiple data sources  
-- Clean and transform data for consistency  
-- Integrate transaction data into a single fact table  
-- Provide analytical insights using stored procedures  
+Objectives
+
+* Membangun Data Warehouse (DWH) untuk data perbankan
+* Melakukan ETL dari berbagai sumber data
+* Membersihkan dan mentransformasi data
+* Menggabungkan data transaksi ke dalam satu tabel
+* Menyediakan analisis data menggunakan stored procedure
 
 ---
 
-## 🗂️ Data Sources
-- SQL Server Database (`transaction_db`, `account`, `customer`, `branch`, `city`, `state`)  
-- Excel File (`transaction_excel.xlsx`)  
-- CSV File (`transaction_csv.csv`)  
+Data Sources
+
+* SQL Server Database (transaction_db, account, customer, branch, city, state)
+* File Excel (transaction_excel.xlsx)
+* File CSV (transaction_csv.csv)
 
 ---
 
-## ⚙️ Tools & Technologies
-- Python (Pandas, SQLAlchemy)  
-- Microsoft SQL Server  
-- SQL Server Management Studio (SSMS)  
+Tools & Technologies
+
+* Python (Pandas, SQLAlchemy)
+* Microsoft SQL Server
+* SQL Server Management Studio (SSMS)
 
 ---
 
-## 🏗️ Data Warehouse Schema
+Data Warehouse Schema
 
-### Dimension Tables
-- `DimCustomer`  
-- `DimAccount`  
-- `DimBranch`  
+Dimension Tables
 
-### Fact Table
-- `FactTransaction`  
+* DimCustomer
+* DimAccount
+* DimBranch
 
----
+Fact Table
 
-## 🔄 ETL Process
-
-### Extract
-- Load data from SQL Server, Excel, and CSV  
-
-### Transform
-- Data cleaning and formatting  
-- Uppercase transformation for customer data  
-- Join customer, city, and state tables  
-- Remove duplicate transaction records  
-- Standardize column naming (PascalCase)  
-
-### Load
-- Insert processed data into Data Warehouse tables  
+* FactTransaction
 
 ---
 
-## 📊 Stored Procedures
+ETL Process
 
-### 1. DailyTransaction
-- Calculates daily transaction count and total amount  
-- Parameters:
-  - `start_date`  
-  - `end_date`  
+Extract
 
-### 2. BalancePerCustomer
-- Calculates current balance per customer  
-- Logic:
-  - Deposit → adds balance  
-  - Other transactions → subtract balance  
-- Parameter:
-  - `name`  
+* Mengambil data dari SQL Server, Excel, dan CSV
+
+Transform
+
+* Membersihkan data
+* Mengubah huruf menjadi uppercase pada data customer
+* Menggabungkan tabel customer, city, dan state
+* Menghapus data duplikat
+* Mengubah nama kolom ke format PascalCase
+
+Load
+
+* Memasukkan data ke dalam tabel Data Warehouse
 
 ---
 
-## ▶️ How to Run
+Stored Procedures
 
-### 1. Create Database & Tables
-Run:
-```sql
-create_table.sql
-````
+DailyTransaction
 
-### 2. Run ETL Process
+* Menghitung jumlah transaksi per hari dan total nominal
+* Parameter: start_date dan end_date
 
-```bash
-python etl.py
-```
+BalancePerCustomer
 
-### 3. Create Stored Procedures
+* Menghitung saldo akhir per customer
+* Deposit menambah saldo, transaksi lain mengurangi saldo
+* Parameter: name
 
-Run:
+---
 
-```sql
-stored_procedure.sql
-```
+How to Run
 
-### 4. Execute Stored Procedures
+1. Jalankan create_table.sql untuk membuat database dan tabel
+2. Jalankan etl.py untuk proses ETL
+3. Jalankan stored_procedure.sql untuk membuat stored procedure
+4. Jalankan query berikut di SQL Server:
 
-```sql
 EXEC DailyTransaction @start_date='2024-01-20', @end_date='2024-01-22';
 EXEC BalancePerCustomer @name='Shelly';
-```
 
 ---
 
-## 📁 Project Structure
+Project Structure
 
-```
-data-warehouse-etl-banking/
-│
-├── etl.py
-├── sql/
-│   ├── create_table.sql
-│   ├── stored_procedure.sql
-├── data/
-│   ├── transaction_excel.xlsx
-│   ├── transaction_csv.csv
-└── README.md
-```
+data-warehouse-etl-banking
 
----
+* etl.py
+* sql
 
-## 🚀 Key Highlights
+  * create_table.sql
+  * stored_procedure.sql
+* data
 
-* End-to-end ETL pipeline implementation
-* Integration of multiple heterogeneous data sources
-* Data cleaning and transformation
-* Data Warehouse design with relational integrity
-* Analytical querying using stored procedures
+  * transaction_excel.xlsx
+  * transaction_csv.csv
+* README
 
 ---
 
-## 📌 Author
+Key Highlights
 
-**Your Name Here**
+* Implementasi ETL end-to-end
+* Integrasi data dari berbagai sumber
+* Data cleaning dan transformasi
+* Desain Data Warehouse dengan relasi yang baik
+* Analisis menggunakan stored procedure
 
 ---
 
-## 📎 Notes
+Author
+Dafanov Dixie Einkinderen
 
-This project was developed as part of a Data Engineer Project-Based Internship (VIX Program).
+---
 
-```
-```
+Notes
+Project ini dibuat sebagai bagian dari Data Engineer Project-Based Internship (VIX Program)
+
+---
